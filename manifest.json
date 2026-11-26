@@ -1,0 +1,44 @@
+{
+  "id": "remote",
+  "name": "远程操作",
+  "name_en": "Remote",
+  "version": "0.1.0",
+  "description": "把本机变成一个任务端点（HTTP），或者把任务发给另一台开着 Local-Harness 的机器。",
+  "description_en": "Expose this machine as an HTTP task endpoint, or send tasks to another machine running Local-Harness.",
+  "author": "yushuchun177",
+  "homepage": "https://github.com/yushuchun177/localharness-plugin-remote",
+  "min_app": "0.1.0",
+  "tools": [
+    {
+      "name": "remote_serve",
+      "description": "在本机开一个 HTTP 端点：POST /task {\"prompt\":\"...\"} 会用本地模型处理后返回 JSON。",
+      "params": {
+        "port": "int，可选，默认 8799"
+      },
+      "dangerous": true
+    },
+    {
+      "name": "remote_call",
+      "description": "把一句任务发给另一台机器上的 Local-Harness 端点，拿回它的回答。",
+      "params": {
+        "host": "string，对方 IP 或主机名",
+        "port": "int，对方端口，默认 8799",
+        "prompt": "string，任务内容"
+      },
+      "dangerous": true
+    },
+    {
+      "name": "remote_ping",
+      "description": "探测一个端点是否在线。",
+      "params": {
+        "host": "string",
+        "port": "int，可选，默认 8799"
+      }
+    },
+    {
+      "name": "remote_stop",
+      "description": "关掉本机端点。",
+      "params": {}
+    }
+  ]
+}
