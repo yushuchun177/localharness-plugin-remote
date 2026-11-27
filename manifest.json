@@ -40,5 +40,14 @@
       "description": "关掉本机端点。",
       "params": {}
     }
+  ],
+  "settings": [
+    {
+      "key": "port",
+      "label": "默认端口",
+      "type": "int",
+      "default": 8799,
+      "help": "remote_serve / remote_call 不填端口时用这个"
+    }
   ]
 }
