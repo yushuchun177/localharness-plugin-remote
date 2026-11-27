@@ -24,6 +24,14 @@ func _app() -> Node:
 	return ml.root.get_node_or_null("/root/App") if ml != null else null
 
 
+
+func _pref(key: String, def_value):
+	var ml := Engine.get_main_loop()
+	var prefs = ml.root.get_node_or_null("/root/PluginPrefs") if ml != null else null
+	if prefs == null:
+		return def_value
+	return prefs.get_value("remote", key, def_value)
+
 func run(tool: String, args: Dictionary) -> Dictionary:
 	match tool:
 		"remote_serve":
@@ -39,7 +47,7 @@ func run(tool: String, args: Dictionary) -> Dictionary:
 
 # ---------------------------------------------------------------- 服务端
 func _serve(args: Dictionary) -> Dictionary:
-	var port: int = clampi(int(args.get("port", 8799)), 1024, 65535)
+	var port: int = clampi(int(args.get("port", int(_pref("port", 8799)))), 1024, 65535)
 	if _server != null:
 		if _port == port:
 			return {"ok": true, "output": "端点已经在 %d 上跑着了，累计处理 %d 个请求" % [_port, _requests_served]}
