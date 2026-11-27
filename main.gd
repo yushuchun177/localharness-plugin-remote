@@ -267,5 +267,8 @@ func _ping(args: Dictionary) -> Dictionary:
 		return {"ok": true, "output": "✓ %s:%d 在线（Local-Harness）" % [host, port]}
 	return {"ok": true, "output": "? %s:%d 有响应但不是 Local-Harness" % [host, port]}
 
-
-
+func on_command(cmd: String, args: String) -> Dictionary:
+	if cmd != "serve":
+		return {"ok": false, "output": "未知命令"}
+	var port := int(args.strip_edges()) if args.strip_edges() != "" else 8799
+	return run("remote_serve", {"port": port})
