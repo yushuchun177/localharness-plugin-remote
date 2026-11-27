@@ -3,6 +3,7 @@
   "name": "远程操作",
   "name_en": "Remote",
   "version": "0.1.0",
+  "license": "GPL-3.0",
   "description": "把本机变成一个任务端点（HTTP），或者把任务发给另一台开着 Local-Harness 的机器。",
   "description_en": "Expose this machine as an HTTP task endpoint, or send tasks to another machine running Local-Harness.",
   "author": "yushuchun177",
