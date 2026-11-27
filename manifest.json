@@ -29,6 +29,13 @@
       "unit": ""
     }
   ],
+  "commands": [
+    {
+      "name": "serve",
+      "description": "开远程端点",
+      "usage": "/serve [端口]"
+    }
+  ],
   "tools": [
     {
       "name": "remote_serve",
