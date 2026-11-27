@@ -62,7 +62,8 @@
       "level": "act",
       "needs": [
         "联网"
-      ]
+      ],
+      "async": true
     },
     {
       "name": "remote_ping",
