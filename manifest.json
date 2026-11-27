@@ -8,6 +8,27 @@
   "author": "yushuchun177",
   "homepage": "https://github.com/yushuchun177/localharness-plugin-remote",
   "min_app": "0.1.0",
+  "requires": {
+    "os": "全平台",
+    "deps": [
+      "curl"
+    ],
+    "disk": "0",
+    "memory": "约 5 MB",
+    "network": true
+  },
+  "settings": [
+    {
+      "key": "port",
+      "label": "默认端口",
+      "type": "int",
+      "default": 8799,
+      "help": "remote_serve / remote_call 不填端口时用这个",
+      "min": 1024,
+      "max": 65535,
+      "unit": ""
+    }
+  ],
   "tools": [
     {
       "name": "remote_serve",
@@ -15,7 +36,12 @@
       "params": {
         "port": "int，可选，默认 8799"
       },
-      "dangerous": true
+      "dangerous": true,
+      "level": "danger",
+      "needs": [
+        "监听端口",
+        "局域网"
+      ]
     },
     {
       "name": "remote_call",
@@ -25,7 +51,11 @@
         "port": "int，对方端口，默认 8799",
         "prompt": "string，任务内容"
       },
-      "dangerous": true
+      "dangerous": true,
+      "level": "act",
+      "needs": [
+        "联网"
+      ]
     },
     {
       "name": "remote_ping",
@@ -33,21 +63,20 @@
       "params": {
         "host": "string",
         "port": "int，可选，默认 8799"
-      }
+      },
+      "level": "read",
+      "needs": [
+        "联网"
+      ]
     },
     {
       "name": "remote_stop",
       "description": "关掉本机端点。",
-      "params": {}
-    }
-  ],
-  "settings": [
-    {
-      "key": "port",
-      "label": "默认端口",
-      "type": "int",
-      "default": 8799,
-      "help": "remote_serve / remote_call 不填端口时用这个"
+      "params": {},
+      "level": "act",
+      "needs": [
+        "监听端口"
+      ]
     }
   ]
 }
